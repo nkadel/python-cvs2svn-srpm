@@ -39,8 +39,13 @@ Source:	cvs2svn-%{version}.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{with_python2}
+%if 0%{?rhel}
+BuildRequires:  python-devel
+buildRequires:  python-setuptools
+%else
 BuildRequires:  python2-devel
 BuildRequires:  python2-setuptools
+%endif # rhel
 %endif # with_python2
 %if 0%{with_python3}
 BuildRequires:  python3-devel
